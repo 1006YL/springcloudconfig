@@ -1,27 +1,28 @@
 spring:
-  profiles: dev
+  profiles:
     active: dev
 
 ---
-server
-  port: 8201
+server:
+  port:  8201
+
 spring:
   profiles: dev
   application:
-    name: provider-service
+    name:  provider-service
 
 eureka:
   client:
     service-url:
       defaultZone: http://eurka7001:7001/eureka/,http://eurka7002:7002/eureka/,http://eurka7003:7003/eureka/
 ---
-server
-  port: 8202
+server:
+  port:  8202
 
 spring:
-  profiles: test
+  profiles:  test
   application:
-    name: provider-service
+    name:  provider-service
 
 eureka:
   client:
