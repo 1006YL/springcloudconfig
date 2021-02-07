@@ -8,6 +8,8 @@ spring:
     application:
         name: springcloudconfig-dev
 
+---
+
 spring:
     prifiles: test
     application:
