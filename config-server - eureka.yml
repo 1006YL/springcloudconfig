@@ -1,0 +1,58 @@
+spring:
+  profiles:
+    active: eureka1dev
+
+---
+server:
+  port: 7001
+
+spring:
+  profiles:  eureka1dev
+  application:
+    name:  eureka-service
+
+eureka:
+  instance:
+    hostname: eurka7001
+  client:
+    register-with-eureka: false
+    fetch-registry: false # 注册中心
+    service-url: #监控页面,端口映射改将127.0.0.1分别映射到eureka7001，7002，7003为了模拟多台计算机
+      defaultZone: http://eurka7002:7002/eureka/,http://eurka7003:7003/eureka/
+
+---
+server:
+  port: 7002
+
+spring:
+  profiles:  eureka2dev
+  application:
+    name:  eureka-service
+
+eureka:
+  instance:
+    hostname: eurka7002
+  client:
+    register-with-eureka: false
+    fetch-registry: false # 注册中心
+    service-url: #监控页面
+      defaultZone: http://eurka7001:7001/eureka/,http://eurka7003:7003/eureka/
+
+---
+server:
+  port: 7003
+
+spring:
+  profiles:  eureka3dev
+  application:
+    name:  eureka-service
+
+eureka:
+  instance:
+    hostname: eurka7003
+  client:
+    register-with-eureka: false
+    fetch-registry: false # 注册中心
+    service-url: #监控页面
+      defaultZone: http://eurka7001:7001/eureka/,http://eurka7002:7002/eureka/
+
